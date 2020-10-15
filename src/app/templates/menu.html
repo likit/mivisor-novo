@@ -1,0 +1,36 @@
+<b-menu>
+    <b-menu-list label="Menu">
+        <b-menu-item icon="information-outline" label="Info"></b-menu-item>
+        <b-menu-item icon="settings">
+        <template slot="label" slot-scope="props">
+            Projects
+        </template>
+        <b-menu-item icon="format-list-bulleted-square" label="All"></b-menu-item>
+        <b-menu-item icon="database">
+            <template slot="label">
+            Databases
+            <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
+                <b-icon icon="dots-vertical" slot="trigger"></b-icon>
+                <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
+                <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
+                <b-dropdown-item aria-role="listitem">Something else</b-dropdown-item>
+            </b-dropdown>
+            </template>
+        </b-menu-item>
+        <b-menu-item icon="cash-multiple" label="Payments" disabled></b-menu-item>
+        </b-menu-item>
+        <b-menu-item icon="account" label="My Account">
+        <b-menu-item label="Account data"></b-menu-item>
+        <b-menu-item label="Addresses"></b-menu-item>
+        </b-menu-item>
+    </b-menu-list>
+    <b-menu-list>
+        <b-menu-item label="Utilities" icon="tools">
+            <b-menu-item icon="magnify" label="Quick scan"></b-menu-item>
+            <b-menu-item icon="check-decagram" label="Sanity check"></b-menu-item>
+        </b-menu-item>
+    </b-menu-list>
+    <b-menu-list label="Actions">
+        <b-menu-item label="Logout"></b-menu-item>
+    </b-menu-list>
+</b-menu>
