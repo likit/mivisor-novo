@@ -2,46 +2,48 @@
 {% block title %}Main Page{% endblock %}
 
 {% block page_content %}
-<section id="app" class="section box">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-one-third is-offset-4">
-                <nav class="panel">
-                    <p class="panel-heading">
-                        Projects
-                    </p>
-                    <div class="panel-block" @click="prompt">
-                        <span class="panel-icon">
-                            <i class="mdi mdi-folder-plus-outline mdi-18px" aria-hidden="true"></i>
-                        </span>
-                        <b-tooltip label="สร้างโปรเจคใหม่" type="is-light is-info">
-                            New project
-                        </b-tooltip>
-                    </div>
-                    <div class="panel-block">
-                        <span class="panel-icon">
-                            <i class="mdi mdi-folder-open-outline mdi-18px" aria-hidden="true"></i>
-                        </span>
-                        <b-tooltip label="เปิดโปรเจคที่สร้างไว้" type="is-light is-info">
-                            Open existing project
-                        </b-tooltip>
-                    </div>
-                    <div class="panel-block">
-                        <span class="panel-icon">
-                            <i class="mdi mdi-close-thick mdi-18px" aria-hidden="true"></i>
-                        </span>
-                        <b-tooltip label="ออกจากโปรแกรม" type="is-light is-info">
-                            Exit
-                        </b-tooltip>
-                    </div>
-                </nav>
-            </div>
+<section id="app" class="section">
+    <div class="columns">
+        <div class="column is-2">
+            {% include "menu.html" %}
         </div>
-        <footer class="footer">
-            <div class="container has-text-centered">
-                <p class="subtitle is-size-5">Mivisor Novo 2.0</p>
-            </div>
-        </footer>
+        <div class="column">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <nav class="panel">
+                            <p class="panel-heading">
+                                Projects
+                            </p>
+                            <div class="panel-block" @click="prompt">
+                                <span class="panel-icon">
+                                    <i class="mdi mdi-folder-plus-outline mdi-18px" aria-hidden="true"></i>
+                                </span>
+                                <b-tooltip label="สร้างโปรเจคใหม่" type="is-light is-info">
+                                    New project
+                                </b-tooltip>
+                            </div>
+                            <div class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="mdi mdi-folder-open-outline mdi-18px" aria-hidden="true"></i>
+                                </span>
+                                <b-tooltip label="เปิดโปรเจคที่สร้างไว้" type="is-light is-info">
+                                    Open existing project
+                                </b-tooltip>
+                            </div>
+                            <div class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="mdi mdi-close-thick mdi-18px" aria-hidden="true"></i>
+                                </span>
+                                <b-tooltip label="ออกจากโปรแกรม" type="is-light is-info">
+                                    Exit
+                                </b-tooltip>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+        </div>
+    </div>
     </div>
 </section>
 {% endblock %}
