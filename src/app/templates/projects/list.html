@@ -2,11 +2,16 @@
 
 {% block page_content %}
 <section class="section">
-    <div class="container">
-        <table class="table">
-            {% for proj in projects %}
+    <div class="container box">
+        <table class="table is-striped is-fullwidth">
+            <thead>
+                <th>Name</th>
+                <th>Created At</th>
+            </thead>
+            {% for proj,ctime in projects %}
             <tr>
                 <td>{{ proj }}</td>
+                <td>{{ ctime }}</td>
             </tr>
             {% endfor %}
         </table>

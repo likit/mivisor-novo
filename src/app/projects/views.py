@@ -1,5 +1,5 @@
 import os
-import glob
+import datetime as dt
 from flask import request, redirect, render_template, url_for, jsonify
 from . import project_bp as project
 
@@ -21,5 +21,9 @@ def create_project():
 
 @project.route('/')
 def list_projects():
-    dirs = [d for d in os.listdir(PROJECT_DIR)]
+    dirs = []
+    for d in os.listdir(PROJECT_DIR):
+        creation_datetime = os.stat(os.path.join(PROJECT_DIR, d)).st_ctime
+        creation_datetime = dt.datetime.fromtimestamp(creation_datetime).strftime('%d/%m/%Y %H:%M:%S')
+        dirs.append((d, creation_datetime))
     return render_template('projects/list.html', projects=dirs)
