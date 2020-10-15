@@ -57,13 +57,30 @@
         },
         methods: {
             prompt() {
+                let self = this
                 this.$buefy.dialog.prompt({
                     message: 'What is your project name?',
                     inputAttrs: {
                         placeholder: 'e.g. My Project',
                     },
                     trapFocus: true,
-                    onConfirm: (value) => window.location = "/projects/new?name=" + value
+                    onConfirm: function(value) {
+                        axios.get("/projects/api/new", { params: { name: value }
+                        }).then((resp)=>{
+                            console.log(resp)
+                            if(resp.data.success) {
+                                self.$buefy.toast.open({
+                                    message: "New project folder has been created.",
+                                    type: 'is-success'
+                                })
+                            } else {
+                                self.$buefy.toast.open({
+                                    message: resp.data.message,
+                                    type: 'is-danger'
+                                })
+                            }
+                        })
+                    }
                 })
             }
         }

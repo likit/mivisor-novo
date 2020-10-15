@@ -16,6 +16,7 @@
 {% endblock %}
 </body>
 {% block scripts %}
+<script src="{{ url_for('static', filename='js/axios.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/vue.js') }}"></script>
 <script src="{{ url_for('static', filename='js/buefy.min.js') }}"></script>
 {% endblock %}
