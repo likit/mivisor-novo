@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<section class="section">
+    <div class="container">
+        <table class="table">
+            {% for proj in projects %}
+            <tr>
+                <td>{{ proj }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+{% endblock %}

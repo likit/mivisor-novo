@@ -73,6 +73,7 @@
                                     message: "New project folder has been created.",
                                     type: 'is-success'
                                 })
+                                window.location = '/projects'
                             } else {
                                 self.$buefy.toast.open({
                                     message: resp.data.message,
