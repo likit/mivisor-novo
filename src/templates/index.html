@@ -2,15 +2,47 @@
 {% block title %}Main Page{% endblock %}
 
 {% block page_content %}
-<section id="app">
-    <v-app>
-        <v-main>
-            <v-container>
-                <h1 class="text-h1">Mivisor Novo 2.0</h1>
-                <v-btn elevation="2">Click me</v-btn>
-            </v-container>
-        </v-main>
-    </v-app>
+<section id="app" class="section box">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third is-offset-4">
+                <nav class="panel">
+                    <p class="panel-heading">
+                        Projects
+                    </p>
+                    <div class="panel-block" @click="prompt">
+                        <span class="panel-icon">
+                            <i class="mdi mdi-folder-plus-outline mdi-18px" aria-hidden="true"></i>
+                        </span>
+                        <b-tooltip label="สร้างโปรเจคใหม่" type="is-light is-info">
+                            New project
+                        </b-tooltip>
+                    </div>
+                    <div class="panel-block">
+                        <span class="panel-icon">
+                            <i class="mdi mdi-folder-open-outline mdi-18px" aria-hidden="true"></i>
+                        </span>
+                        <b-tooltip label="เปิดโปรเจคที่สร้างไว้" type="is-light is-info">
+                            Open existing project
+                        </b-tooltip>
+                    </div>
+                    <div class="panel-block">
+                        <span class="panel-icon">
+                            <i class="mdi mdi-close-thick mdi-18px" aria-hidden="true"></i>
+                        </span>
+                        <b-tooltip label="ออกจากโปรแกรม" type="is-light is-info">
+                            Exit
+                        </b-tooltip>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container has-text-centered">
+                <p class="subtitle is-size-5">Mivisor Novo 2.0</p>
+            </div>
+        </footer>
+    </div>
 </section>
 {% endblock %}
 
@@ -19,7 +51,22 @@
 <script>
     new Vue({
         el: '#app',
-        vuetify: new Vuetify()
+        data() {
+            return {
+            }
+        },
+        methods: {
+            prompt() {
+                this.$buefy.dialog.prompt({
+                    message: 'What is your project name?',
+                    inputAttrs: {
+                        placeholder: 'e.g. My Project',
+                    },
+                    trapFocus: true,
+                    onConfirm: (value) => window.location = "/projects/new?name=" + value
+                })
+            }
+        }
     })
 </script>
 {% endblock %}

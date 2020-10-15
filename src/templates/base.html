@@ -6,9 +6,9 @@
     <title>{% block title %}{% endblock %}</title>
     {% block styles %}
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/materialdesignicons.min.css') }}">
+          href="{{ url_for('static', filename='css/materialdesignicons.css') }}">
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/vuetify.min.css') }}">
+          href="{{ url_for('static', filename='css/buefy.min.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -17,6 +17,6 @@
 </body>
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/vue.js') }}"></script>
-<script src="{{ url_for('static', filename='js/vuetify.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/buefy.min.js') }}"></script>
 {% endblock %}
 </html>
