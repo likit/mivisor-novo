@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<section id="app" class="section">
+    <div class="columns">
+        <div class="column is-2">
+            {% include "menu.html" %}
+        </div>
+        <div class="column">
+            <h1 class="title"><% projectData.name %></h1>
+            <div class="box">
+                <b-tabs type="is-boxed">
+                    <b-tab-item label="Data">
+                        <table class="table is-striped">
+                            <tr>
+                                <td class="label">Data Source</td>
+                                <td>
+                                </td>
+                            </tr>
+                        </table>
+                    </b-tab-item>
+                    <b-tab-item label="Info">
+                        <table class="table is-striped">
+                            <tr>
+                                <td class="label">Name</td>
+                                <td><% projectData.name %></td>
+                            </tr>
+                        </table>
+                    </b-tab-item>
+                    <b-tab-item label="Settings"></b-tab-item>
+                </b-tabs>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['<%', '%>'],
+        data() {
+            return {
+                projectUrl: {{ project_url|tojson|safe }},
+                projectData: null
+            }
+        },
+        methods: {
+            loadData() {
+                let self = this
+                axios.get(this.projectUrl).then((resp)=>{
+                    console.log(resp)
+                    self.projectData = resp.data
+                })
+            }
+        },
+        mounted() {
+            this.loadData()
+        }
+    })
+</script>
+{% endblock %}

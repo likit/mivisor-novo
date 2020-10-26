@@ -1,20 +1,51 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-<section class="section">
-    <div class="container box">
-        <table class="table is-striped is-fullwidth">
-            <thead>
-                <th>Name</th>
-                <th>Created At</th>
-            </thead>
-            {% for proj,ctime in projects %}
-            <tr>
-                <td>{{ proj }}</td>
-                <td>{{ ctime }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+<section id="app" class="section">
+    <div class="columns">
+        <div class="column is-2">
+            {% include "menu.html" %}
+        </div>
+        <div class="column">
+            <h1 class="title">All Projects</h1>
+            <div class="box">
+                <table class="table is-striped is-fullwidth">
+                    <thead>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th></th>
+                    </thead>
+                    {% for proj,ctime in projects %}
+                    <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ proj }}</td>
+                            <td>{{ ctime }}</td>
+                            <td>
+                                <a href="{{ url_for('project.display_project', name=proj) }}">
+                                    <span>View</span>
+                                    <span class="icon">
+                                        <i class="mdi mdi-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+    })
+</script>
 {% endblock %}

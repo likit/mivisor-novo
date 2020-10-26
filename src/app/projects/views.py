@@ -19,6 +19,14 @@ def create_project():
         return jsonify(success=True)
 
 
+@project.route('/api/project/<name>')
+def load_project(name):
+    project_data = {
+        'name': name
+    }
+    return jsonify(project_data)
+
+
 @project.route('/')
 def list_projects():
     dirs = []
@@ -27,3 +35,9 @@ def list_projects():
         creation_datetime = dt.datetime.fromtimestamp(creation_datetime).strftime('%d/%m/%Y %H:%M:%S')
         dirs.append((d, creation_datetime))
     return render_template('projects/list.html', projects=dirs)
+
+
+@project.route('/project/<name>')
+def display_project(name):
+    return render_template('projects/main.html',
+                           project_url=url_for('project.load_project', name=name))
